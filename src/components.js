@@ -43,7 +43,7 @@ export default (editor, config = {}) => {
 
                     this.set('videoId', videoId);
                     try {
-                        this.set('autoplay', JSON.parse(qr.autoplay) === true);
+                        this.set('autoplay', JSON.parse(qr.autoPlay) === true);
                     } catch (e) {
                         this.set('autoplay', false);
                     }
