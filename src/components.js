@@ -14,6 +14,20 @@ export default (editor, config = {}) => {
         // Extend default properties
         defaults: defaults,
 
+        initialize: function (o, opt) {
+            videoModel.prototype.initialize.apply(this, [o, opt])
+            var traits = [];
+            var prov = this.get('provider');
+            switch (prov) {
+                case 'sv':
+                    traits = this.getSproutVideoTraits();
+                    if (this.get('src'))
+                        this.parseFromSrc();
+                    this.set('traits', traits);
+                    break;
+            }
+        },
+
         parseFromSrc: function () {
             videoModel.prototype.parseFromSrc.apply(this);
 
