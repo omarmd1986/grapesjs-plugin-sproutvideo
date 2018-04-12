@@ -34,12 +34,14 @@ export default (editor, config = {}) => {
             var prov = this.get('provider');
             var uri = this.parseUri(this.get('src'));
             var qr = uri.query;
+
             switch (prov) {
                 case 'sv':
-                    var videoId2 = uri.pathname.split('/').pop();
-                    var videoId1 = uri.pathname.split('/').pop();
-                    this.set('videoId', videoId1);
-                    this.set('videoId2', videoId2);
+                    var embed = uri.pathname.split('embed').pop();
+                    embed = embed.slice(1, embed.length - 1);
+                    var videoId = embed;
+
+                    this.set('videoId', videoId);
                     try {
                         this.set('autoplay', JSON.parse(qr.autoplay) === true);
                     } catch (e) {

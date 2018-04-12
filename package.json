@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-plugin-sproutvideo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "GrapesJS Plugin to extend the video funtionality to support Sprout Video",
   "main": "dist/grapesjs-plugin-sproutvideo.min.js",
   "scripts": {
