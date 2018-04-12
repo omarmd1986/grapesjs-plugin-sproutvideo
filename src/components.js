@@ -26,10 +26,26 @@ export default (editor, config = {}) => {
                     var videoId1 = uri.pathname.split('/').pop();
                     this.set('videoId', videoId1);
                     this.set('videoId2', videoId2);
+                    try {
+                        this.set('autoplay', JSON.parse(qr.autoplay) === true);
+                    } catch (e) {
+                        this.set('autoplay', false);
+                    }
 
-                    this.set('autoplay', JSON.parse(qr.autoplay) === true);
-                    this.set('loop', JSON.parse(qr.loop) === true);
-                    this.set('controls', JSON.parse(qr.bigPlayButton) === false);
+                    try {
+                        this.set('loop', JSON.parse(qr.loop) === true);
+
+                    } catch (e) {
+                        this.set('loop', false);
+                    }
+
+                    try {
+                        this.set('controls', JSON.parse(qr.bigPlayButton) === false);
+
+                    } catch (e) {
+                        this.set('controls', true);
+                    }
+
                     break;
                 default:
             }
