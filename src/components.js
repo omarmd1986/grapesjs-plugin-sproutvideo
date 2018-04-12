@@ -34,7 +34,6 @@ export default (editor, config = {}) => {
             var prov = this.get('provider');
             var uri = this.parseUri(this.get('src'));
             var qr = uri.query;
-
             switch (prov) {
                 case 'sv':
                     var embed = uri.pathname.split('embed').pop();
@@ -50,18 +49,15 @@ export default (editor, config = {}) => {
 
                     try {
                         this.set('loop', JSON.parse(qr.loop) === true);
-
                     } catch (e) {
                         this.set('loop', false);
                     }
 
                     try {
                         this.set('controls', JSON.parse(qr.bigPlayButton) === false);
-
                     } catch (e) {
-                        this.set('controls', true);
+                        this.set('controls', false);
                     }
-
                     break;
                 default:
             }
